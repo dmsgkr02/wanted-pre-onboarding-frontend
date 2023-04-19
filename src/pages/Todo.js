@@ -45,7 +45,8 @@ const Todo = () => {
   }
 
   const createTodo = () => {
-    fetch('http://localhost:8000/todos', {
+    
+    fetch(`${process.env.REACT_APP_BACK_URL}/todos`, {
       method: 'POST',
       headers : {
         Authorization: `Bearer ${token}`,
@@ -62,7 +63,8 @@ const Todo = () => {
   }
 
   const deleteTodo = (id) => {
-    fetch(`http://localhost:8000/todos/${id}`, {
+    
+    fetch(`${process.env.REACT_APP_BACK_URL}/todos/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -77,7 +79,7 @@ const Todo = () => {
   const updateTodo = (id) => {
     const findIndex = todos.findIndex(todo => todo.id === id);
 
-    fetch(`http://localhost:8000/todos/${id}`, {
+    fetch(`${process.env.REACT_APP_BACK_URL}/todos/${id}`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${token}`,

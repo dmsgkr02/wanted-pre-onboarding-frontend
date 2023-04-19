@@ -7,7 +7,7 @@ const SignUp = () => {
   const [errorMessage, setErrorMessage] = React.useState(null);
 
   const signUp = (email, password) => {
-    fetch('http://localhost:8000/auth/signup', {
+    fetch(`${process.env.REACT_APP_BACK_URL}/auth/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

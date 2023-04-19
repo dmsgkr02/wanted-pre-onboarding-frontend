@@ -20,7 +20,7 @@ const todoLoader = async () => {
     return redirect('/signin');
   }
   
-  const data = await fetch('http://localhost:8000/todos', {
+  const data = await fetch(`${process.env.REACT_APP_BACK_URL}/todos`, {
     method: "GET",
     headers : {
       Authorization: `Bearer ${token}`,
