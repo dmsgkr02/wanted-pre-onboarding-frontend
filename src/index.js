@@ -16,6 +16,31 @@ const signLoader = () => {
   return null;
 }
 
+const todoLoader = async () => {
+  const token = localStorage.getItem("JWT");
+  if (!token) {
+    return redirect('/signin');
+  }
+  const data = await fetch(`${process.env.REACT_APP_BACK_URL}/todos`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+  })
+  .then(response => response.json())
+  .then((data) => {
+    if (data.statusCode === 401) {
+      throw new Error(data.message);
+    } else {
+      return data;
+    }
+  }).catch((error) => {
+    console.log(error);
+  })
+  
+  return data;
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +58,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/todo",
+    loader: todoLoader,
     element: <Todo />
   },
 ]);
