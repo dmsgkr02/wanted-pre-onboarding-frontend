@@ -3,11 +3,45 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter, RouterProvider, redirect } from 'react-router-dom';
+import Todo from './pages/Todo';
+import Signin from './pages/Signin';
+import Signup from './pages/Signup';
+
+const signLoader = () => {
+  const token = localStorage.getItem("JWT");
+  if (token) {
+    return redirect('/todo');
+  }
+  return null;
+}
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />
+  },
+  {
+    path: "/signin",
+    loader:signLoader,
+    element: <Signin />
+  },
+  {
+    path: "/signup",
+    loader:signLoader,
+    element: <Signup />
+  },
+  {
+    path: "/todo",
+    element: <Todo />
+  },
+]);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

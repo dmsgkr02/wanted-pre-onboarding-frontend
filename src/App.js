@@ -1,22 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import { Link } from "react-router-dom"
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Link to={`/signin`}>로그인</Link>
+        <Link to={`/signup`}>회원가입</Link>
+        <Link to={`/todo`}>투두 리스트</Link>
       </header>
     </div>
   );
