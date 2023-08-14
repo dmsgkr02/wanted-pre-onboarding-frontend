@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import './ValidInput.css'
 
 export default function ValidInput(props) {
   const [validation, setValidation] = useState(false);
@@ -24,15 +25,17 @@ export default function ValidInput(props) {
     setValidation(true);
   }
 
-  useEffect(() => {
-    handleCheck("");
-  }, []);
-
-  
   return (
-    <>
-      <input placeholder={props.placeholder} data-testid={props.dataTestid} value={props.value} onChange={handleChange}/>
-      {validation ? null : helpWords}
-    </>
+    <div className='valid-container'>
+      <div>
+        <label htmlFor={props.dataTestid}>
+          {props.placeholder}
+        </label>
+      </div>
+      <input className="valid-input" id={props.dataTestid} placeholder={props.placeholder} data-testid={props.dataTestid} value={props.value} onChange={handleChange} type={props.type}/>
+      <div className='valid-message'>
+        {validation ? null : helpWords}
+      </div>
+    </div>
   )
 }

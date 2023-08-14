@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useLoaderData } from "react-router-dom";
+import './Todo.css'
 
 const TodoElement =({todo, deleteTodo, token, setTodos}) => {
   const [edit, setEdit] = useState(false);
@@ -119,24 +120,29 @@ export default function Todo() {
   }
 
   return (
-    <>
-      <div>
-        <input data-testid="new-todo-input" value={newTodo} onChange={handleNewTodo}/>
-        <button data-testid="new-todo-add-button" disabled={createTodoDisabled} onClick={createTodo}>추가</button>
+    <div className='container'>
+      <div className='todo-container'>
+        <div className='title'>
+          투두 리스트
+        </div>
+        <div className='new-todo-container'>
+          <input placeholder="추가" data-testid="new-todo-input" value={newTodo} onChange={handleNewTodo}/>
+          <button data-testid="new-todo-add-button" disabled={createTodoDisabled} onClick={createTodo}>추가</button>
+        </div>
+        <div>
+          <ul>
+            {todos.map((todo) => {
+              return (
+                <li key={todo.id}>
+                  <label>
+                    <TodoElement token={token} todo={todo} deleteTodo={deleteTodo} setTodos={setTodos}/>
+                  </label>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
-      <div>
-        <ul>
-          {todos.map((todo) => {
-            return (
-              <li key={todo.id}>
-                <label>
-                  <TodoElement token={token} todo={todo} deleteTodo={deleteTodo} setTodos={setTodos}/>
-                </label>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </>
+    </div>
   )
 }

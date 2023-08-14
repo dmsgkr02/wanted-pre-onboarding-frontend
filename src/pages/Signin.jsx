@@ -1,5 +1,5 @@
 import React from 'react'
-import SignUi from '../component/SignUi'
+import SignUI from '../component/SignUI'
 import { useNavigate } from "react-router-dom";
 
 export default function Signin() {
@@ -31,10 +31,6 @@ export default function Signin() {
   }
   
   return (
-    <>
-      <SignUi buttonId="signin-button" buttonName="로그인" onClick={signIn}/>
-      {errorMessage}
-    </>
-    
+    <SignUI buttonId="signin-button" buttonName="로그인" onClick={signIn} errorMessage={errorMessage}/>
   )
 }

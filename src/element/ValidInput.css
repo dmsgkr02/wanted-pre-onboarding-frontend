@@ -1,0 +1,12 @@
+.valid-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.valid-message {
+  height: 30px;
+}
+
+.valid-input {
+  
+}

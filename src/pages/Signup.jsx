@@ -1,7 +1,6 @@
 import React from 'react'
-import SignUi from '../component/SignUi'
+import SignUI from '../component/SignUI'
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -32,9 +31,6 @@ export default function Signup() {
   }
 
   return (
-    <>
-      <SignUi buttonId="signup-button" buttonName={"회원가입"} onClick={signUp}/>
-      {errorMessage}
-    </> 
+    <SignUI buttonId="signup-button" buttonName={"회원가입"} onClick={signUp} errorMessage={errorMessage}/>
   )
 }
