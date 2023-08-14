@@ -4,12 +4,12 @@ export const RequireRule = {
   message: '필수 입력 항목입니다.',
 }
 export const EmailRule = {
-  rule: /\@/,
+  rule: /@/,
   match: true,
   message: '@를 추가해야 합니다.',
 }
 export const CantStartAt = {
-  rule: /^\@/,
+  rule: /^@/,
   match: false,
   message: '@로 출발 할 수 없습니다.',
 }
